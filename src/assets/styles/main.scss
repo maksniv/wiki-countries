@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import './variables.scss';
+@import './reset.scss';
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}

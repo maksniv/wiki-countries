@@ -33,4 +33,10 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import '@/assets/styles/variables.scss';
+
+.header {
+  color: $VeryDarkBlueText;
+}
+</style>
