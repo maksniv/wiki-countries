@@ -1,5 +1,7 @@
 <template>
   <TheHeader></TheHeader>
+  <router-link class="header__link" to="/">Where is the world?</router-link>
+  <router-link class="header__link" to="/about">Where is the world? 2</router-link>
   <router-view />
 </template>
 
