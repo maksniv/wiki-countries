@@ -47,6 +47,7 @@ export default {
 
   color: $VeryDarkBlueText;
   background-color: $whiteElements;
+  box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
 
   display: flex;
   justify-content: center;

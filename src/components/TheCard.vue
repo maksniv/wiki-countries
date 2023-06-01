@@ -1,7 +1,6 @@
 <template>
-  <div class="card">
+  <div class="card" @click="$router.push(`/country/${country.name.common}`)">
     <img class="card__flag" :src="country.flags.png" />
-
     <div class="card__description">
       <div class="card__title">{{ country.name.common }}</div>
       <div class="card__population">
@@ -29,7 +28,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
   @import '@/assets/styles/variables.scss';
   background-color: $whiteElements;
