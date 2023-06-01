@@ -1,7 +1,7 @@
 <template>
   <TheHeader></TheHeader>
-  <router-link class="header__link" to="/">Where is the world?</router-link>
-  <router-link class="header__link" to="/about">Where is the world? 2</router-link>
+  <router-link class="header__link" to="/">home </router-link>
+  <router-link class="header__link" to="/about"> country</router-link>
   <router-view />
 </template>
 
@@ -14,5 +14,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
