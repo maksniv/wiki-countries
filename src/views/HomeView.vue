@@ -1,9 +1,15 @@
 <template>
   <main class="main">
-    <TheForm></TheForm>
+    <TheForm
+      :optionValue="selectedSort"
+      :options="sortOptions"
+      @updateOptionValue="updateOptionValue"
+      :searchValue="searchValue"
+      @updateSearchValue="updateSearchValue"
+    ></TheForm>
     <div v-if="!isCountriesLoading" class="card__wrapper">
       <TheCard
-        v-for="country in dataCountries"
+        v-for="country in searchCountries"
         :key="country.name.official"
         :country="country"
       />
@@ -24,6 +30,15 @@ export default {
     return {
       dataCountries: '',
       isCountriesLoading: false,
+      selectedSort: '',
+      sortOptions: [
+        { value: 'Africa', name: 'Africa' },
+        { value: 'Americas', name: 'America' },
+        { value: 'Asia', name: 'Asia' },
+        { value: 'Europe', name: 'Europe' },
+        { value: 'Oceania', name: 'Oceania' },
+      ],
+      searchValue: '',
     };
   },
   methods: {
@@ -32,7 +47,6 @@ export default {
       try {
         const request = await fetch(`https://restcountries.com/v3.1/all`);
         const response = await request.json();
-        console.log(response);
         this.dataCountries = response;
       } catch (error) {
         console.error(error);
@@ -40,9 +54,31 @@ export default {
         this.isCountriesLoading = false;
       }
     },
+    updateOptionValue(value) {
+      this.selectedSort = value;
+    },
+    updateSearchValue(value) {
+      this.searchValue = value;
+    },
   },
   mounted() {
     this.getDataCountries();
+  },
+  computed: {
+    sortedCountries() {
+      if (this.selectedSort === '') return this.dataCountries;
+      return [...this.dataCountries].filter(
+        (country) => country.region === this.selectedSort
+      );
+    },
+    searchCountries() {
+      if (this.searchValue === '') return this.sortedCountries;
+      return this.sortedCountries.filter((country) =>
+        country.name.common
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase())
+      );
+    },
   },
 };
 </script>
