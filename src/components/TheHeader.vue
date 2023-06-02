@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__wrapper">
       <div class="header__title">
-        <router-link class="header__link" to="/"
+        <router-link class="header__link" to="/wiki-countries/"
           >Where in the world?</router-link
         >
       </div>

@@ -4,7 +4,7 @@ import AboutView from '../views/AboutView.vue';
 
 const routes = [
   {
-    path: '/',
+    path: '/wiki-countries/',
     name: 'home',
     component: HomeView,
   },
