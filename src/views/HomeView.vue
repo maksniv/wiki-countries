@@ -22,6 +22,7 @@
 import TheForm from '@/components/TheForm.vue';
 import TheCard from '@/components/TheCard.vue';
 import TheLoader from '@/components/TheLoader.vue';
+// import { mapActions, mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'HomeView',
@@ -42,6 +43,9 @@ export default {
     };
   },
   methods: {
+    // ...mapActions({
+    //   getDataCountries: 'getDataCountries',
+    // }),
     async getDataCountries() {
       this.isCountriesLoading = true;
       try {
@@ -63,6 +67,7 @@ export default {
   },
   mounted() {
     this.getDataCountries();
+    // this.$store.dispatch('getDataCountries');
   },
   computed: {
     sortedCountries() {
@@ -79,6 +84,17 @@ export default {
           .includes(this.searchValue.toLowerCase())
       );
     },
+    // ...mapState({
+    //   dataCountries: (state) => state.state.dataCountries,
+    //   // isCountriesLoading: (state) => state.state.isLoading,
+    //   selectedSort: (state) => state.state.selectedSort,
+    //   sortOptions: (state) => state.state.sortOptions,
+    //   searchValue: (state) => state.state.searchCountry,
+    // }),
+    // ...mapGetters({
+    //   sortedCountries: 'sortedCountries',
+    //   searchCountries: 'searchCountries',
+    // }),
   },
 };
 </script>

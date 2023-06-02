@@ -1,6 +1,10 @@
 <template>
   <div class="card" @click="$router.push(`/country/${country.name.common}`)">
-    <img class="card__flag" :src="country.flags.png" />
+    <img
+      class="card__flag"
+      :src="country.flags?.svg"
+      :alt="country.flags?.alt"
+    />
     <div class="card__description">
       <div class="card__title">{{ country.name.common }}</div>
       <div class="card__population">

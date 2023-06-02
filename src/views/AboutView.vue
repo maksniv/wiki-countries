@@ -2,64 +2,7 @@
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
       <button class="card__button" @click="$router.push('/')">Back</button>
-      <div class="card">
-        <img class="card__flag" />
-        <div class="card__description">
-          <div class="card__title">{{ $route.params.name }}</div>
-          <div class="card__container">
-            <div class="card__column">
-              <div class="card__native-name">
-                <span class="card__span">Native name: </span>
-                {{ dataCountry.subregion }}
-              </div>
-              <div class="card__population">
-                <span class="card__span">Population: </span>
-                {{ dataCountry.population }}
-              </div>
-              <div class="card__region">
-                <span class="card__span">Region: </span>
-                {{ dataCountry.region }}
-              </div>
-              <div class="card__sub-region">
-                <span class="card__span">Sub Region: </span
-                >{{ dataCountry.subregion }}
-              </div>
-              <div class="card__capital" v-if="dataCountry.capital">
-                <span class="card__span">Capital: </span>
-                {{ dataCountry.capital[0] }}
-              </div>
-            </div>
-            <div class="card__column">
-              <div class="card__top-Level-domain">
-                <span class="card__span">Top Level Domain: </span>
-                <span v-for="tld in dataCountry.tld" :key="tld">
-                  {{ tld + ' ' }}
-                </span>
-              </div>
-              <div class="card__currencies:">
-                <span class="card__span">Currencies: </span>
-                {{ dataCountry.currencies }}
-              </div>
-              <div class="card__languages">
-                <span class="card__span">Languages: </span>
-                <span v-for="language in dataCountry.languages" :key="language">
-                  {{ language + ' ' }}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="card__border-countries">
-            <span class="card__span">Border Countries: </span>
-            <span
-              class="card__span-border"
-              v-for="country in dataCountry.borders"
-              :key="country"
-            >
-              {{ country }}
-            </span>
-          </div>
-        </div>
-      </div>
+      <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
     </div>
     <TheLoader v-else></TheLoader>
   </main>
@@ -67,14 +10,15 @@
 
 <script>
 import TheLoader from '@/components/TheLoader.vue';
+import TheCardAbout from '@/components/TheCardAbout.vue';
 
 export default {
   name: 'AboutView',
-  components: { TheLoader },
+  components: { TheLoader, TheCardAbout },
   data() {
     return {
       isCountryLoading: false,
-      dataCountry: '',
+      dataCountry: {},
     };
   },
   methods: {
@@ -110,6 +54,7 @@ export default {
     flex-direction: column;
     .card__button {
       align-self: flex-start;
+      position: relative;
       width: 100%;
       max-width: 140px;
       height: 40px;
@@ -121,52 +66,16 @@ export default {
       border-radius: 0.4rem;
       background-color: $whiteElements;
       box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
-    }
-    .card {
-      display: grid;
-      gap: 8rem;
-      grid-template-columns: repeat(2, 1fr);
-
-      min-width: 100%;
-      max-width: 1440px;
-      .card__flag {
+      &::after {
+        content: '';
         display: block;
-
-        width: 100%;
-        height: 400px;
-
-        object-fit: cover;
-        object-position: center center;
-
-        box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
-      }
-      .card__description {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        line-height: 2;
-        .card__title {
-          font-size: 31px;
-          font-weight: 800;
-          margin-top: 1.9rem;
-        }
-        .card__container {
-          display: grid;
-          gap: 13.3rem;
-          grid-template-columns: repeat(2, 1fr);
-          margin-top: 0.9rem;
-        }
-        .card__border-countries {
-          margin-top: 4.1rem;
-        }
-        .card__span {
-          font-weight: 600;
-        }
-        .card__span-border {
-          box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
-          padding: 0rem 1em;
-          margin: 0.5rem;
-        }
+        width: 20px;
+        height: 20px;
+        background-image: url('@/assets/img/arrow-back.svg');
+        background-size: cover;
+        position: absolute;
+        top: calc(52% - 10px);
+        left: calc(20% - 10px);
       }
     }
   }

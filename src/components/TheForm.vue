@@ -1,13 +1,15 @@
 <template>
   <form class="form" @submit.prevent>
-    <input
-      :value="searchValue"
-      @input="changeInput"
-      class="form__input"
-      type="text"
-      placeholder="Search for a country..."
-    />
-    <div class="form__wrapper">
+    <div class="form__input-wrapper">
+      <input
+        class="form__input"
+        :value="searchValue"
+        @input="changeInput"
+        type="text"
+        placeholder="Search for a country..."
+      />
+    </div>
+    <div class="form__select-wrapper">
       <select class="form__select" :value="optionValue" @change="changeOption">
         <option disabled value="">Filter by Region</option>
         <option
@@ -53,7 +55,6 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/variables.scss';
-@import 'vue-select/dist/vue-select.css';
 
 .form {
   color: $VeryDarkBlueText;
@@ -63,20 +64,35 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .form__input {
+  .form__input-wrapper {
     width: 100%;
     max-width: 480px;
-    height: 60px;
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-image: url('@/assets/img/search.svg');
+      background-size: cover;
+      position: absolute;
+      top: calc(51% - 10px);
+      left: calc(9% - 10px);
+    }
+    .form__input {
+      width: 100%;
+      height: 60px;
 
-    padding: 0.75rem 2.75rem 0.75rem 4.75rem;
+      padding: 0.75rem 2.75rem 0.75rem 4.75rem;
 
-    font-size: 14px;
+      font-size: 14px;
 
-    border-radius: 0.4rem;
-    background-color: $whiteElements;
-    box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+      border-radius: 0.4rem;
+      background-color: $whiteElements;
+      box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+    }
   }
-  .form__wrapper {
+  .form__select-wrapper {
     position: relative;
     width: 100%;
     max-width: 210px;
