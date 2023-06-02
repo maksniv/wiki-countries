@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="$router.push(`/country/${country.name.common}`)">
+  <div class="card" @click="$router.push(`/wiki-countries/country/${country.name.common}`)">
     <img
       class="card__flag"
       :src="country.flags?.svg"
