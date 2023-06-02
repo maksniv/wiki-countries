@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
-      <button class="card__button" @click="$router.push('/')">Back</button>
+      <button class="card__button" @click="$router.push('/wiki-countries/')">Back</button>
       <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
     </div>
     <TheLoader v-else></TheLoader>
