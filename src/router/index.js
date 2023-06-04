@@ -4,12 +4,12 @@ import AboutView from '../views/AboutView.vue';
 
 const routes = [
   {
-    path: '/wiki-countries/wiki-countries/',
+    path: '/',
     name: 'home',
     component: HomeView,
   },
   {
-    path: '/wiki-countries/wiki-countries/country/:name',
+    path: '/country/:name',
     name: 'about',
     component: AboutView,
   },
