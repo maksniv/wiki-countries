@@ -83,12 +83,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 
 .main {
   color: $VeryDarkBlueText;
-  padding: 3% 5.5%;
+  background-color: $VeryLightGrayBackground;
+  padding: 2.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,6 +102,50 @@ export default {
     display: grid;
     gap: 4rem;
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* xs (<=543px) */
+@media (max-width: 575px) {
+  .main {
+    .card__wrapper {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+/* sm (>=576 и <=767) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .main {
+    .card__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* md (>=768 и <=991) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .main {
+    .card__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* lg (>=992 и <=1199) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .main {
+    .card__wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* xl (>=1200) */
+@media (min-width: 1200px) {
+  .main {
+    .card__wrapper {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 </style>

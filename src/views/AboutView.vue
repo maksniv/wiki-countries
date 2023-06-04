@@ -1,9 +1,7 @@
 <template>
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
-      <button class="card__button" @click="$router.push('/')">
-        Back
-      </button>
+      <button class="card__button" @click="$router.push('/')">Back</button>
       <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
     </div>
     <TheLoader v-else></TheLoader>
@@ -48,12 +46,19 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: $VeryDarkBlueText;
-  background-color: $whiteElements;
-  padding: 5% 5.5%;
+  background-color: $VeryLightGrayBackground;
+  min-height: calc(100vh - 5rem);
+  padding: 2.5rem 5rem;
   .card__wrapper {
+    max-width: 1440px;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
     .card__button {
       align-self: flex-start;
       position: relative;
@@ -61,9 +66,10 @@ export default {
       max-width: 140px;
       height: 40px;
 
-      padding: 0.75rem 2.75rem 0.75rem 4.75rem;
+      padding: 0.6rem 1rem 0.75rem 1.8rem;
 
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 600;
 
       border-radius: 0.4rem;
       background-color: $whiteElements;
@@ -76,10 +82,38 @@ export default {
         background-image: url('@/assets/img/arrow-back.svg');
         background-size: cover;
         position: absolute;
-        top: calc(52% - 10px);
-        left: calc(20% - 10px);
+        top: calc(51% - 10px);
+        left: calc(28% - 10px);
       }
     }
   }
+}
+/* xs (<=543px) */
+@media (max-width: 575px) {
+  .main {
+    padding: 1rem 2rem;
+    .card__wrapper {
+      .card__button {
+        font-size: 15px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* sm (>=576 и <=767) */
+@media (min-width: 576px) and (max-width: 767px) {
+}
+
+/* md (>=768 и <=991) */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* lg (>=992 и <=1199) */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* xl (>=1200) */
+@media (min-width: 1200px) {
 }
 </style>

@@ -9,5 +9,9 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   overflow-x: hidden;
-  background-color: $VeryLightGrayBackground;
+}
+
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
 }

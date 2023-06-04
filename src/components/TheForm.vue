@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/styles/variables.scss';
 
 .form {
@@ -64,6 +64,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   .form__input-wrapper {
     width: 100%;
     max-width: 480px;
@@ -117,5 +118,34 @@ export default {
       height: 5px;
     }
   }
+}
+/* xs (<=543px) */
+@media (max-width: 575px) {
+  .form {
+    .form__select-wrapper {
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+/* sm (>=576 и <=767) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .form {
+    .form__select-wrapper {
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+/* md (>=768 и <=991) */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* lg (>=992 и <=1199) */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* xl (>=1200) */
+@media (min-width: 1200px) {
 }
 </style>
