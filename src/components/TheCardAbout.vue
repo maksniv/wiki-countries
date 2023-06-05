@@ -12,7 +12,7 @@
           <div class="card__native-name">
             <span class="card__span">Native Name: </span>
             <span v-for="name in dataCountry.name?.nativeName" :key="name">
-              {{ name.official + ' '  }}
+              {{ name.official + ' ' }}
             </span>
           </div>
           <div class="card__population">
@@ -82,8 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
 .card {
   display: grid;
   gap: 10rem;
@@ -100,7 +98,7 @@ export default {
     object-fit: cover;
     object-position: center center;
 
-    box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+    box-shadow: 0px 0px 10px -5px var(--fontColor);
   }
   .card__description {
     display: flex;
@@ -125,7 +123,7 @@ export default {
 
       .card__span-border {
         font-size: 12px;
-        box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+        box-shadow: 0px 0px 10px -5px var(--fontColor);
         padding: 0rem 1em;
         margin: 0.5rem;
       }

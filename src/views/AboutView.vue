@@ -1,7 +1,10 @@
 <template>
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
-      <button class="card__button" @click="$router.push('/')">Back</button>
+      <div class="card__button_wrapper">
+        <v-icon name="co-arrow-left" class="card__button_icon" />
+        <button class="card__button" @click="$router.push('/')">Back</button>
+      </div>
       <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
     </div>
     <TheLoader v-else></TheLoader>
@@ -44,13 +47,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $VeryDarkBlueText;
-  background-color: $VeryLightGrayBackground;
+  color: var(--fontColor);
+  background-color: var(--backgroundColor);
   min-height: calc(100vh - 5rem);
   padding: 2.5rem 5rem;
   .card__wrapper {
@@ -59,31 +61,30 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    .card__button {
+    .card__button_wrapper {
       align-self: flex-start;
       position: relative;
       width: 100%;
       max-width: 140px;
-      height: 40px;
-
-      padding: 0.6rem 1rem 0.75rem 1.8rem;
-
-      font-size: 15px;
-      font-weight: 600;
-
-      border-radius: 0.4rem;
-      background-color: $whiteElements;
-      box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
-      &::after {
-        content: '';
-        display: block;
+      .card__button_icon {
         width: 20px;
         height: 20px;
-        background-image: url('@/assets/img/arrow-back.svg');
-        background-size: cover;
         position: absolute;
-        top: calc(51% - 10px);
+        top: calc(50% - 10px);
         left: calc(28% - 10px);
+      }
+      .card__button {
+        width: 100%;
+        height: 40px;
+
+        padding: 0.6rem 1rem 0.75rem 1.8rem;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        border-radius: 0.4rem;
+        background-color: var(--elementsColor);
+        box-shadow: 0px 0px 10px -5px var(--fontColor);
       }
     }
   }

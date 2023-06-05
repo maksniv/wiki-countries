@@ -1,6 +1,7 @@
 <template>
   <form class="form" @submit.prevent>
     <div class="form__input-wrapper">
+      <v-icon name="hi-solid-search" class="form__input-icon" />
       <input
         class="form__input"
         :value="searchValue"
@@ -46,7 +47,7 @@ export default {
     changeOption(event = '') {
       this.$emit('updateOptionValue', event.target.value);
     },
-    changeInput(event) {
+    changeInput(event = '') {
       this.$emit('updateSearchValue', event.target.value);
     },
   },
@@ -54,10 +55,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
 .form {
-  color: $VeryDarkBlueText;
+  color: var(--fontColor);
   width: 100%;
   max-width: 1440px;
 
@@ -69,16 +68,12 @@ export default {
     width: 100%;
     max-width: 480px;
     position: relative;
-    &::after {
-      content: '';
-      display: block;
+    .form__input-icon {
       width: 20px;
       height: 20px;
-      background-image: url('@/assets/img/search.svg');
-      background-size: cover;
       position: absolute;
       top: calc(51% - 10px);
-      left: calc(9% - 10px);
+      left: calc(10% - 10px);
     }
     .form__input {
       width: 100%;
@@ -89,8 +84,8 @@ export default {
       font-size: 14px;
 
       border-radius: 0.4rem;
-      background-color: $whiteElements;
-      box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+      background-color: var(--elementsColor);
+      box-shadow: 0px 0px 10px -5px var(--fontColor);
     }
   }
   .form__select-wrapper {
@@ -104,8 +99,8 @@ export default {
       padding: 1rem 1rem 1rem 1rem;
 
       border-radius: 0.4rem;
-      background-color: $whiteElements;
-      box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+      background-color: var(--elementsColor);
+      box-shadow: 0px 0px 10px -5px var(--fontColor);
     }
     .form__select-button {
       position: absolute;

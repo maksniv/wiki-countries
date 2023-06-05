@@ -34,10 +34,10 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  @import '@/assets/styles/variables.scss';
-  background-color: $whiteElements;
+  background-color: var(--elementsColor);
+  color: var(--fontColor);
   border-radius: 0.4rem;
-  box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+  box-shadow: 0px 0px 10px -5px var(--fontColor);
   cursor: pointer;
   .card__flag {
     display: block;
@@ -49,7 +49,7 @@ export default {
     object-fit: cover;
     object-position: center center;
 
-    box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+    box-shadow: 0px 0px 10px -5px var(--fontColor);
   }
   .card__description {
     padding: 1.5rem;

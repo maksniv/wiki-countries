@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
-@import './variables.scss';
 @import './reset.scss';
 
 body {
@@ -9,6 +8,19 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   overflow-x: hidden;
+  background-color: var(--backgroundColor);
+
+  &[data-theme='light'] {
+    --fontColor: hsl(200, 15%, 8%);
+    --fontInput: hsl(0, 0%, 52%);
+    --backgroundColor: hsl(0, 0%, 98%);
+    --elementsColor: hsl(0, 0%, 100%);
+  }
+  &[data-theme='dark'] {
+    --fontColor: hsl(0, 0%, 100%);
+    --backgroundColor: hsl(207, 26%, 17%);
+    --elementsColor: hsl(209, 23%, 22%);
+  }
 }
 
 #app {

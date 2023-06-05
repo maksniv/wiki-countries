@@ -84,11 +84,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
 .main {
-  color: $VeryDarkBlueText;
-  background-color: $VeryLightGrayBackground;
+  color: var(--fontColor);
+  background-color: var(--backgroundColor);
   padding: 2.5rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -119,7 +117,6 @@ export default {
   .main {
     .card__wrapper {
       grid-template-columns: repeat(2, 1fr);
-
     }
   }
 }

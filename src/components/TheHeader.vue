@@ -6,26 +6,10 @@
           >Where in the world?</router-link
         >
       </div>
-      <div class="header__button-switch-color">
-        <svg
-          class="button-switch-color__svg"
-          stroke="currentColor"
-          fill="currentColor"
-          stroke-width="0"
-          viewBox="0 0 512 512"
-          height="18px"
-          width="18px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="32"
-            d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
-          ></path>
-        </svg>
-        <span class="button-switch-color__span">Dark Mode</span>
+      <div class="header__button-switch-color" @click="toggleTheme">
+        <v-icon name="md-darkmode-outlined" v-if="theme === 'light'" />
+        <v-icon name="md-darkmode" v-else />
+        <span class="button-switch-color__span">{{ theme }} Mode</span>
       </div>
     </div>
   </header>
@@ -34,20 +18,36 @@
 <script>
 export default {
   name: 'TheHeader',
+  data() {
+    return {
+      theme: 'dark',
+    };
+  },
+  methods: {
+    toggleTheme() {
+      this.theme = this.theme === 'light' ? 'dark' : 'light';
+    },
+  },
+  watch: {
+    theme() {
+      document.body.setAttribute('data-theme', this.theme);
+    },
+  },
+  mounted() {
+    this.toggleTheme();
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
-
+<style lang="scss">
 .header {
   width: 100%;
   height: 5rem;
   padding: 0rem 5rem;
 
-  color: $VeryDarkBlueText;
-  background-color: $whiteElements;
-  box-shadow: 0px 0px 10px -5px $VeryDarkBlueText;
+  color: var(--fontColor);
+  background-color: var(--elementsColor);
+  box-shadow: 0px 0px 10px -5px var(--fontColor);
 
   display: flex;
   justify-content: center;
@@ -65,10 +65,11 @@ export default {
     }
     .header__button-switch-color {
       display: flex;
+      gap: 0.5rem;
       font-size: 16px;
       font-weight: 600;
       .button-switch-color__span {
-        margin-left: 8px;
+        text-transform: capitalize;
       }
     }
   }

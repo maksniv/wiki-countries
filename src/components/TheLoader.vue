@@ -9,9 +9,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/variables.scss';
 .loader {
-  color: $VeryDarkBlueText;
+  color: var(--fontColor);
   font-size: 10px;
   width: 1em;
   height: 1em;
