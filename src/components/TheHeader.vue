@@ -68,6 +68,11 @@ export default {
       gap: 0.5rem;
       font-size: 16px;
       font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease-in;
+      &:hover {
+        transform: scale(1.02);
+      }
       .button-switch-color__span {
         text-transform: capitalize;
       }

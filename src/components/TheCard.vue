@@ -39,6 +39,10 @@ export default {
   border-radius: 0.4rem;
   box-shadow: 0px 0px 10px -5px var(--fontColor);
   cursor: pointer;
+  transition: transform 0.15s ease-in;
+  &:hover {
+    transform: scale(1.02);
+  }
   .card__flag {
     display: block;
     width: 100%;

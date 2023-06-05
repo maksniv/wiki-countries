@@ -1,9 +1,9 @@
 <template>
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
-      <div class="card__button_wrapper">
+      <div class="card__button_wrapper" @click="$router.push('/')">
         <v-icon name="co-arrow-left" class="card__button_icon" />
-        <button class="card__button" @click="$router.push('/')">Back</button>
+        <button class="card__button">Back</button>
       </div>
       <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
     </div>
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       isCountryLoading: false,
-      dataCountry: {},
+      dataCountry: [],
     };
   },
   methods: {
@@ -66,12 +66,16 @@ export default {
       position: relative;
       width: 100%;
       max-width: 140px;
+      transition: all 0.2s ease-in;
+      &:hover {
+        transform: scale(1.05);
+      }
       .card__button_icon {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         position: absolute;
-        top: calc(50% - 10px);
-        left: calc(28% - 10px);
+        top: calc(48% - 12px);
+        left: calc(25% - 12px);
       }
       .card__button {
         width: 100%;
