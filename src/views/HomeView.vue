@@ -109,6 +109,7 @@ export default {
   .main {
     .card__wrapper {
       grid-template-columns: repeat(1, 1fr);
+      gap: 3rem;
     }
   }
 }
@@ -118,6 +119,7 @@ export default {
   .main {
     .card__wrapper {
       grid-template-columns: repeat(2, 1fr);
+
     }
   }
 }
