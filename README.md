@@ -13,6 +13,5 @@ SPA приложение - библиотека данных о странах. 
 
 - VUE
 - VUE-ROUTER
-- VUEX (Еще в процессе)
 - SCSS
 - Restcountries API
