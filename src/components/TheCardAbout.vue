@@ -57,6 +57,7 @@
         <span class="card__span">Border Countries: </span>
         <span v-if="!dataCountry.borders">No border country</span>
         <TheBorderCountry
+          v-else
           v-for="codeBorderCountry in dataCountry.borders"
           :key="codeBorderCountry"
           :codeBorderCountry="codeBorderCountry"
@@ -86,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: grid;
-  gap: 10rem;
+  gap: 7rem;
   grid-template-columns: repeat(2, 1fr);
 
   width: 100%;
@@ -108,9 +109,9 @@ export default {
     align-items: flex-start;
     line-height: 2;
     .card__title {
-      font-size: 31px;
+      font-size: 32px;
       font-weight: 800;
-      margin-top: 1rem;
+      margin-top: 1.6rem;
     }
     .card__container {
       display: grid;
@@ -122,7 +123,7 @@ export default {
       margin-top: 4.1rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.7rem;
     }
     .card__span {
       font-weight: 600;
@@ -134,6 +135,7 @@ export default {
   .card {
     gap: 1rem;
     grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 3rem;
     .card__flag {
       height: 200px;
     }

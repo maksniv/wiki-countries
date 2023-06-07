@@ -59,13 +59,13 @@ export default {
   color: var(--fontColor);
   background-color: var(--backgroundColor);
   min-height: calc(100vh - 5rem);
-  padding: 2.5rem 5rem;
+  padding: 5rem 5rem;
   .card__wrapper {
     max-width: 1440px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 5rem;
     .card__button_wrapper {
       align-self: flex-start;
       position: relative;
@@ -101,8 +101,9 @@ export default {
 /* xs (<=543px) */
 @media (max-width: 575px) {
   .main {
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     .card__wrapper {
+      gap: 4rem;
       .card__button {
         font-size: 15px;
         font-weight: 600;
