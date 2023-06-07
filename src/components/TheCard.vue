@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="$router.push(`/country/${country.name.common}`)">
+  <div class="card" @click="$router.push(`/country/${country.name.official}`)">
     <img
       class="card__flag"
       :src="country.flags?.svg"
@@ -38,6 +38,7 @@ export default {
   color: var(--fontColor);
   border-radius: 0.4rem;
   box-shadow: 0px 0px 10px -5px var(--fontColor);
+  max-height: 320px;
   cursor: pointer;
   transition: transform 0.15s ease-in;
   &:hover {

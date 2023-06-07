@@ -74,7 +74,7 @@ export default {
       position: absolute;
       top: calc(51% - 10px);
       left: calc(10% - 10px);
-      cursor: text
+      cursor: text;
     }
     .form__input {
       width: 100%;

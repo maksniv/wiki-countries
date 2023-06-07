@@ -1,8 +1,8 @@
 <template>
   <span
     class="card__span-border"
-    @click="$router.push(`/country/${nameBorderCountry}`)"
-    >{{ nameBorderCountry }}
+    @click="$router.push(`/country/${officialNameBorderCountry}`)"
+    >{{ commonNameBorderCountry }}
   </span>
 </template>
 
@@ -11,7 +11,8 @@ export default {
   name: 'TheBorderCountry',
   data() {
     return {
-      nameBorderCountry: '',
+      officialNameBorderCountry: '',
+      commonNameBorderCountry: '',
     };
   },
   props: {
@@ -26,7 +27,8 @@ export default {
           `https://restcountries.com/v3.1/alpha/${code}`
         );
         const response = await request.json();
-        this.nameBorderCountry = response[0].name.common;
+        this.officialNameBorderCountry = response[0].name.official;
+        this.commonNameBorderCountry = response[0].name.common;
       } catch (error) {
         console.error(error);
       }
@@ -41,8 +43,10 @@ export default {
 <style lang="scss" scoped>
 .card__span-border {
   font-size: 14px;
+  max-height: 28px;
   box-shadow: 0px 0px 10px -5px var(--fontColor);
-  padding: 0.5rem 1rem;
+  padding: 0rem 1.5rem;
+  font-weight: 300;
   cursor: pointer;
   transition: all 0.15s ease-in;
   &:hover {
