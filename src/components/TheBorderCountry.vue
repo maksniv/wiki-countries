@@ -11,7 +11,7 @@ export default {
   name: 'TheBorderCountry',
   data() {
     return {
-      nameBorderCountry: '555',
+      nameBorderCountry: '',
     };
   },
   props: {
