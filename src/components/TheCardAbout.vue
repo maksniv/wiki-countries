@@ -9,7 +9,7 @@
       <div class="card__title">{{ $route.params.name }}</div>
       <div class="card__container">
         <div class="card__column">
-          <div class="card__native-name">
+          <div class="card__native-name" v-if="dataCountry.name?.nativeName">
             <span class="card__span">Native Name: </span>
             <span v-for="name in dataCountry.name?.nativeName" :key="name">
               {{ name.official + ' ' }}
@@ -23,7 +23,7 @@
             <span class="card__span">Region: </span>
             {{ dataCountry.region }}
           </div>
-          <div class="card__sub-region">
+          <div class="card__sub-region" v-if="dataCountry.subregion">
             <span class="card__span">Sub Region: </span
             >{{ dataCountry.subregion }}
           </div>
@@ -33,19 +33,19 @@
           </div>
         </div>
         <div class="card__column">
-          <div class="card__top-Level-domain">
+          <div class="card__top-Level-domain" v-if="dataCountry.tld">
             <span class="card__span">Top Level Domain: </span>
             <span v-for="tld in dataCountry.tld" :key="tld">
               {{ tld + ' ' }}
             </span>
           </div>
-          <div class="card__currencies:">
+          <div class="card__currencies" v-if="dataCountry.currencies">
             <span class="card__span">Currencies: </span>
             <span v-for="currency in dataCountry.currencies" :key="currency">
               {{ currency.name + ' ' }}
             </span>
           </div>
-          <div class="card__languages">
+          <div class="card__languages" v-if="dataCountry.languages">
             <span class="card__span">Languages: </span>
             <span v-for="language in dataCountry.languages" :key="language">
               {{ language + ' ' }}
@@ -55,20 +55,22 @@
       </div>
       <div class="card__border-countries">
         <span class="card__span">Border Countries: </span>
-        <span
-          class="card__span-border"
-          v-for="country in dataCountry.borders"
-          :key="country"
-        >
-          {{ country }}
-        </span>
+        <span v-if="!dataCountry.borders">No border country</span>
+        <TheBorderCountry
+          v-for="codeBorderCountry in dataCountry.borders"
+          :key="codeBorderCountry"
+          :codeBorderCountry="codeBorderCountry"
+        ></TheBorderCountry>
       </div>
     </div>
   </div>
 </template>
 <script>
+import TheBorderCountry from '@/components/TheBorderCountry.vue';
+
 export default {
   name: 'TheCardAbout',
+  components: { TheBorderCountry },
   data() {
     return {};
   },
@@ -120,13 +122,7 @@ export default {
       margin-top: 4.1rem;
       display: flex;
       flex-wrap: wrap;
-
-      .card__span-border {
-        font-size: 12px;
-        box-shadow: 0px 0px 10px -5px var(--fontColor);
-        padding: 0rem 1em;
-        margin: 0.5rem;
-      }
+      gap: 1rem;
     }
     .card__span {
       font-weight: 600;

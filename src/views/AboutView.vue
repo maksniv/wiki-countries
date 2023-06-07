@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <div class="card__wrapper" v-if="!isCountryLoading">
-      <div class="card__button_wrapper" @click="$router.push('/')">
+      <div class="card__button_wrapper" @click="$router.go(-1)">
         <v-icon name="co-arrow-left" class="card__button_icon" />
         <button class="card__button">Back</button>
       </div>
@@ -25,11 +25,11 @@ export default {
     };
   },
   methods: {
-    async getDataCountry() {
+    async getDataCountry(countryName) {
       this.isCountryLoading = true;
       try {
         const request = await fetch(
-          `https://restcountries.com/v3.1/name/${this.$route.params.name}`
+          `https://restcountries.com/v3.1/name/${countryName}`
         );
         const response = await request.json();
         this.dataCountry = response[0];
@@ -41,7 +41,12 @@ export default {
     },
   },
   mounted() {
-    this.getDataCountry();
+    this.getDataCountry(this.$route.params.name);
+  },
+  watch: {
+    $route() {
+      this.getDataCountry(this.$route.params.name);
+    },
   },
 };
 </script>
