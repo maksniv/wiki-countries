@@ -43,5 +43,10 @@ export default {
   font-size: 14px;
   box-shadow: 0px 0px 10px -5px var(--fontColor);
   padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 </style>
