@@ -25,11 +25,11 @@ export default {
     };
   },
   methods: {
-    async getDataCountry(countryName) {
+    async getDataCountry(countryCode) {
       this.isCountryLoading = true;
       try {
         const request = await fetch(
-          `https://restcountries.com/v3.1/name/${countryName}`
+          `https://restcountries.com/v3.1/alpha/${countryCode}`
         );
         const response = await request.json();
         this.dataCountry = response[0];

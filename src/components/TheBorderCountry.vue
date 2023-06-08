@@ -1,7 +1,7 @@
 <template>
   <span
     class="card__span-border"
-    @click="$router.push(`/country/${officialNameBorderCountry}`)"
+    @click="$router.push(`/country/${codeBorderCountry}`)"
     >{{ commonNameBorderCountry }}
   </span>
 </template>
@@ -11,7 +11,6 @@ export default {
   name: 'TheBorderCountry',
   data() {
     return {
-      officialNameBorderCountry: '',
       commonNameBorderCountry: '',
     };
   },
@@ -27,7 +26,6 @@ export default {
           `https://restcountries.com/v3.1/alpha/${code}`
         );
         const response = await request.json();
-        this.officialNameBorderCountry = response[0].name.official;
         this.commonNameBorderCountry = response[0].name.common;
       } catch (error) {
         console.error(error);

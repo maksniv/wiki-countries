@@ -6,7 +6,7 @@
       :alt="dataCountry.flags?.alt"
     />
     <div class="card__description">
-      <div class="card__title">{{ $route.params.name }}</div>
+      <div class="card__title">{{ dataCountry.name?.official }}</div>
       <div class="card__container">
         <div class="card__column">
           <div class="card__native-name" v-if="dataCountry.name?.nativeName">
@@ -189,7 +189,7 @@ export default {
     gap: 1rem;
     grid-template-columns: repeat(1, 1fr);
     .card__flag {
-      height: 300px;
+      height: 350px;
     }
     .card__description {
       .card__title {

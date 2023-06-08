@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="$router.push(`/country/${country.name.official}`)">
+  <div class="card" @click="$router.push(`/country/${country.cca3}`)">
     <img
       class="card__flag"
       :src="country.flags?.svg"
