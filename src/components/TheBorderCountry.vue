@@ -23,10 +23,10 @@ export default {
     async getBorderCountry(code) {
       try {
         const request = await fetch(
-          `https://restcountries.com/v3.1/alpha/${code}`
+          `https://restcountries.com/v3.1/alpha/${code}?fields=name`
         );
         const response = await request.json();
-        this.commonNameBorderCountry = response[0].name.common;
+        this.commonNameBorderCountry = response.name.common;
       } catch (error) {
         console.error(error);
       }
