@@ -10,6 +10,7 @@
         placeholder="Search for a country..."
       />
     </div>
+
     <div class="form__select-wrapper">
       <select class="form__select" :value="optionValue" @change="changeOption">
         <option disabled value="">Filter by Region</option>
@@ -31,6 +32,10 @@
 <script>
 export default {
   name: 'TheForm',
+
+  data() {
+    return {};
+  },
   props: {
     optionValue: {
       type: String,
@@ -97,7 +102,7 @@ export default {
       width: 100%;
       height: 60px;
 
-      padding: 1rem 1rem 1rem 1rem;
+      padding: 1rem 1rem 1rem 0.5rem;
 
       border-radius: 0.4rem;
       background-color: var(--elementsColor);
@@ -109,7 +114,7 @@ export default {
       font-size: 11px;
       z-index: 1;
       top: 22px;
-      right: 40px;
+      right: 30px;
       width: 5px;
       height: 5px;
     }

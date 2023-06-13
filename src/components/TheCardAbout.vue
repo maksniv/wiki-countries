@@ -12,7 +12,7 @@
           <div class="card__native-name" v-if="dataCountry.name?.nativeName">
             <span class="card__span">Native Name: </span>
             <span v-for="name in dataCountry.name?.nativeName" :key="name">
-              {{ name.official + ' ' }}
+              {{ name.official + '; ' }}
             </span>
           </div>
           <div class="card__population">
@@ -48,7 +48,7 @@
           <div class="card__languages" v-if="dataCountry.languages">
             <span class="card__span">Languages: </span>
             <span v-for="language in dataCountry.languages" :key="language">
-              {{ language + ' ' }}
+              {{ language + '; ' }}
             </span>
           </div>
         </div>
