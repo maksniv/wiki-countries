@@ -13,6 +13,7 @@ SPA приложение - библиотека данных о странах. 
 ## Стек технологий
 
 - VUE
+- VUEX
 - VUE-ROUTER
 - SCSS
 - Restcountries API

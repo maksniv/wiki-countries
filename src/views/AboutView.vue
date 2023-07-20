@@ -1,19 +1,20 @@
 <template>
   <main class="main">
-    <div class="card__wrapper" v-if="!isCountryLoading">
+    <div class="card__wrapper" v-show="!getLoadingStatus">
       <div class="card__button_wrapper" @click="$router.go(-1)">
         <v-icon name="co-arrow-left" class="card__button_icon" />
         <button class="card__button">Back</button>
       </div>
-      <TheCardAbout :dataCountry="dataCountry"></TheCardAbout>
+      <TheCardAbout :dataCountry="getCurrentDataCountry"></TheCardAbout>
     </div>
-    <TheLoader v-else></TheLoader>
+    <TheLoader v-show="getLoadingStatus"></TheLoader>
   </main>
 </template>
 
 <script>
 import TheLoader from '@/components/TheLoader.vue';
 import TheCardAbout from '@/components/TheCardAbout.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'AboutView',
@@ -25,20 +26,10 @@ export default {
     };
   },
   methods: {
-    async getDataCountry(countryCode) {
-      this.isCountryLoading = true;
-      try {
-        const request = await fetch(
-          `https://restcountries.com/v3.1/alpha/${countryCode}`
-        );
-        const response = await request.json();
-        this.dataCountry = response[0];
-      } catch (error) {
-        console.error(error);
-      } finally {
-        this.isCountryLoading = false;
-      }
-    },
+    ...mapActions(['getDataCountry']),
+  },
+  computed: {
+    ...mapGetters(['getCurrentDataCountry', 'getLoadingStatus']),
   },
   mounted() {
     this.getDataCountry(this.$route.params.name);

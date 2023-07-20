@@ -1,20 +1,20 @@
 <template>
   <main class="main">
     <TheForm
-      :optionValue="selectedSort"
-      :options="sortOptions"
+      :optionValue="getSelectedSortInputValue"
+      :options="getSortOptions"
       @updateOptionValue="updateOptionValue"
-      :searchValue="searchValue"
+      :searchValue="getSearchCountryInputValue"
       @updateSearchValue="updateSearchValue"
     ></TheForm>
-    <div v-if="!isCountriesLoading" class="card__wrapper">
+    <div v-show="!getLoadingStatus" class="card__wrapper">
       <TheCard
         v-for="country in searchCountries"
         :key="country.name.official"
         :country="country"
       />
     </div>
-    <TheLoader v-else></TheLoader>
+    <TheLoader v-show="getLoadingStatus"></TheLoader>
   </main>
 </template>
 
@@ -22,63 +22,36 @@
 import TheForm from '@/components/TheForm.vue';
 import TheCard from '@/components/TheCard.vue';
 import TheLoader from '@/components/TheLoader.vue';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'HomeView',
   components: { TheForm, TheCard, TheLoader },
   data() {
-    return {
-      dataCountries: '',
-      isCountriesLoading: false,
-      selectedSort: '',
-      sortOptions: [
-        { value: 'Africa', name: 'Africa' },
-        { value: 'Americas', name: 'America' },
-        { value: 'Asia', name: 'Asia' },
-        { value: 'Europe', name: 'Europe' },
-        { value: 'Oceania', name: 'Oceania' },
-      ],
-      searchValue: '',
-    };
+    return {};
   },
   methods: {
-    async getDataCountries() {
-      this.isCountriesLoading = true;
-      try {
-        const request = await fetch(`https://restcountries.com/v3.1/all`);
-        const response = await request.json();
-        this.dataCountries = response;
-      } catch (error) {
-        console.error(error);
-      } finally {
-        this.isCountriesLoading = false;
-      }
-    },
+    ...mapActions(['getDataCountries']),
+    ...mapMutations(['setSelectedSort', 'setSearchCountry']),
+
     updateOptionValue(value) {
-      this.selectedSort = value;
+      this.setSelectedSort(value);
     },
     updateSearchValue(value) {
-      this.searchValue = value;
+      this.setSearchCountry(value);
     },
   },
   mounted() {
     this.getDataCountries();
   },
   computed: {
-    sortedCountries() {
-      if (this.selectedSort === '') return this.dataCountries;
-      return [...this.dataCountries].filter(
-        (country) => country.region === this.selectedSort
-      );
-    },
-    searchCountries() {
-      if (this.searchValue === '') return this.sortedCountries;
-      return this.sortedCountries.filter((country) =>
-        country.name.common
-          .toLowerCase()
-          .includes(this.searchValue.toLowerCase())
-      );
-    },
+    ...mapGetters([
+      'getSortOptions',
+      'searchCountries',
+      'getLoadingStatus',
+      'getSearchCountryInputValue',
+      'getSelectedSortInputValue',
+    ]),
   },
 };
 </script>
